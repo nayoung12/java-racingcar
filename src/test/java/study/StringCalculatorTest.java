@@ -25,18 +25,18 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("커스텀 구분자/기본 구분자 지정 테스트")
     void testDelimeter(){
-        assertThat(stringCalculator.getDelimeter("1,2")).isEqualTo("[,:-]");
-        assertThat(stringCalculator.getDelimeter("1,2,3")).isEqualTo("[,:-]");
-        assertThat(stringCalculator.getDelimeter("1,2:3")).isEqualTo("[,:-]");
-        assertThat(stringCalculator.getDelimeter("//;\n1;2;3")).isEqualTo(";");
+        assertThat(stringCalculator.parseDelimeter("1,2")).isEqualTo("[,:-]");
+        assertThat(stringCalculator.parseDelimeter("1,2,3")).isEqualTo("[,:-]");
+        assertThat(stringCalculator.parseDelimeter("1,2:3")).isEqualTo("[,:-]");
+        assertThat(stringCalculator.parseDelimeter("//;\n1;2;3")).isEqualTo(";");
     }
 
     @Test
     @DisplayName("구분자 통한 실제 숫자 문자열 구하기")
     void testFinData(){
-        assertThat(stringCalculator.getNumberData("1,2,3")).isEqualTo("1,2,3");
-        assertThat(stringCalculator.getNumberData("1,2:3")).isEqualTo("1,2:3");
-        assertThat(stringCalculator.getNumberData("//;\n1;2;3")).isEqualTo("1;2;3");
+        assertThat(stringCalculator.parseNumberData("1,2,3")).isEqualTo("1,2,3");
+        assertThat(stringCalculator.parseNumberData("1,2:3")).isEqualTo("1,2:3");
+        assertThat(stringCalculator.parseNumberData("//;\n1;2;3")).isEqualTo("1;2;3");
     }
 
     @Test
